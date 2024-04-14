@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<menuitem id="delivery_menu" name="Delivery" />
+		<menuitem id="delivery_order_menu" name="Orders" parent="delivery_menu" action="delivery_orders_action" sequence="2" />
+		<menuitem id="delivery_customers_menu" name="Customers" parent="delivery_menu" action="delivery_customers_action" sequence="2" />
+		<menuitem id="carrier_menu" name="Carriers" parent="delivery_menu" action="delivery_carrier_action" sequence="2" />
+	</data>
+</odoo>
