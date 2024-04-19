@@ -15,8 +15,9 @@ class Order(models.Model):
         ('confirmed', 'Confirmed'),
         ('done', 'Done'),
         ('cancel', 'Cancelled')
-    ], string='Status', default='draft')
+    ], string='Status', default='draft', group_expand='_expand_states', required=True)
     amount = fields.Float(string='Amount')
+    color = fields.Integer('Color', compute='_get_color')
 
     @api.model
     def create(self, vals):
@@ -41,7 +42,26 @@ class Order(models.Model):
             if order.status == 'done':
                 raise models.ValidationError('Order is already done')
             order.status = 'done'
+    
+    def remove_order(self):
+        for order in self:
+            if order.status == 'done':
+                raise models.ValidationError('Cannot remove done order')
+            order.unlink()
 
+    def _expand_states(self, states, domain, order):
+        return [key for key, val in type(self).status.selection]
+
+    def _get_color(self):
+        for order in self:
+            if order.status == 'draft':
+                order.color = 3
+            elif order.status == 'confirmed':
+                order.color = 2
+            elif order.status == 'done':
+                order.color = 10
+            elif order.status == 'cancel':
+                order.color = 1
 
 
     

@@ -5,7 +5,7 @@
 			<field name="name">Orders</field>
 			<field name="res_model">delivery.order</field>
 			<field name="type">ir.actions.act_window</field>
-			<field name="view_mode">tree,form</field>
+			<field name="view_mode">tree,form,calendar,kanban</field>
 		</record>
 
 		<record id="order_view_form" model="ir.ui.view">
@@ -25,6 +25,57 @@
 			</field>
 		</record>
 
+		<record id="order_view_kanban" model="ir.ui.view">
+			<field name="name">Delivery Order Kanban</field>
+			<field name="model">delivery.order</field>
+			<field name="arch" type="xml">
+				<kanban string="Delivery Orders" default_group_by="status">
+					<field name="color" invisible="1"/>
+					<templates>
+						<t t-name="kanban-box">"
+							<div class="oe_kanban_content" t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)}">
+								<div class="oe_kanban_card">
+									<div class="oe_kanban_card_header">
+										<div class="oe_kanban_card_title">
+											<field name="name"/>
+										</div>
+										<div class="oe_kanban_card_subtitle">
+											<field name="status"/>
+										</div>
+									</div>
+									<div class="oe_kanban_card_content">
+										<div class="oe_kanban_card_field">
+											<field name="customer_id"/>
+										</div>
+										<div class="oe_kanban_card_field">
+											<field name="date"/>
+										</div>
+										<div class="oe_kanban_card_field">
+											<field name="amount"/>
+										</div>
+									</div>
+								</div>
+							</div>
+						</t>
+					</templates>
+				</kanban>
+			</field>
+		</record>
+
+		<record id="order_view_calendar" model="ir.ui.view">
+			<field name="name">Delivery Order Calendar</field>
+			<field name="model">delivery.order</field>
+			<field name="arch" type="xml">
+				<calendar string="Delivery Orders" date_start="date">
+					<field name="name"/>
+					<field name="customer_id"/>
+					<field name="date"/>
+					<field name="status"/>
+					<field name="amount"/>
+				</calendar>
+			</field>
+		</record>
+
 		<record id="order_view_tree" model="ir.ui.view">
 			<field name="name">Delivery Order Tree</field>
 			<field name="model">delivery.order</field>
@@ -38,6 +89,7 @@
 					<field name="status" />
 					<field name="amount" />
 					<button name="action_end_delivery" string="End delivery" type="object" class="oe_highlight"/>
+					<button name="remove_order" string="Remove delivery" type="object" class="oe_highlight"/>
 				</tree>
 			</field>
 		</record>
