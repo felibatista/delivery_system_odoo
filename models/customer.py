@@ -36,4 +36,24 @@ class Customer(models.Model):
             if customer.email and '@' not in customer.email:
                 raise models.ValidationError('Invalid email')
             
+    @api.onchange('email')
+    def _onchange_email(self):
+        if self.email:
+            self.email = self.email.lower()
+
+    @api.onchange('phone')
+    def _onchange_phone(self):
+        if self.phone:
+            self.phone = self.phone.replace(' ', '').replace('-', '')
+    
+    def action_view_orders(self):
+        action = {
+            'type': 'ir.actions.act_window',
+            'name': 'Orders',
+            'res_model': 'delivery.order',
+            'view_mode': 'tree,form',
+            'domain': [('customer_id', '=', self.id)],
+        }
+        return action
+            
     

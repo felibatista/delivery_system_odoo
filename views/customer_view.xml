@@ -41,8 +41,7 @@
                     <field name="email" />
                     <field name="phone" />
                     <field name="address" />
-                    <field name="orders" widget="one2many"/>
-                    <field name="total_orders"/>
+                    <button name="action_view_orders" type="object" string="Ver Ordenes" class="btn-primary"/>
                 </tree>
             </field>
         </record>
