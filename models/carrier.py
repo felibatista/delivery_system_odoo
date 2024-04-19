@@ -29,6 +29,28 @@ class DeliveryCarrier(models.Model):
         if vals.get('carrier_id', 'New') == 'New':
             vals['carrier_id'] = self.env['ir.sequence'].next_by_code('delivery.carrier_id') or 'New'
         return super(DeliveryCarrier, self).create(vals)
+    
+    @api.constrains('age')
+    def _check_age(self):
+        for carrier in self:
+            if carrier.age < 18:
+                raise models.ValidationError('Age must be greater than 18')
+            
+    @api.constrains('work_hours')
+    def _check_work_hours(self):
+        for carrier in self:
+            if carrier.work_hours < 0:
+                raise models.ValidationError('Work hours must be greater than 0')
+            if carrier.work_hours > 8:
+                raise models.ValidationError('Work hours must be less than 8')
+        
+    @api.constrains('phone')
+    def _check_phone(self):
+        for carrier in self:
+            if carrier.phone and not carrier.phone.isdigit():
+                raise models.ValidationError('Phone must be a number')
+            
+
         
 
 

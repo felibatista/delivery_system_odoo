@@ -10,7 +10,7 @@
     'icon': '/delivery_system/static/icon.png',
     'depends' : ['base'],
     'data': [
-        'data/ir_sequence_data.xml',
+        'data/ir_sequences_data.xml',
         'views/order_view.xml',
         'views/carrier_view.xml',
         'views/customer_view.xml',

@@ -23,3 +23,17 @@ class Customer(models.Model):
         if vals.get('customer_id', 'New') == 'New':
             vals['customer_id'] = self.env['ir.sequence'].next_by_code('delivery.customer_id') or 'New'
         return super(Customer, self).create(vals)
+    
+    @api.constrains('phone')
+    def _check_phone(self):
+        for customer in self:
+            if customer.phone and not customer.phone.isdigit():
+                raise models.ValidationError('Phone must be a number')
+        
+    @api.constrains('email')
+    def _check_email(self):
+        for customer in self:
+            if customer.email and '@' not in customer.email:
+                raise models.ValidationError('Invalid email')
+            
+    
