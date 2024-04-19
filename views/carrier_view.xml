@@ -8,14 +8,6 @@
 			<field name="view_mode">tree,form</field>
 		</record>
 
-        <record id="seq_carrier_id" model="ir.sequence"> 
-            <field name="name">Autoincrement carrier ID</field> 
-            <field name="code">delivery.carrier_id</field> 
-            <field name="prefix">CAR</field> 
-            <field name="padding">3</field>
-            <field name="company_id" eval="False"/>
-        </record>
-
         <record id="carrier_form" model="ir.ui.view">
             <field name="name">Delivery Carrier</field>
             <field name="model">delivery.carrier</field>

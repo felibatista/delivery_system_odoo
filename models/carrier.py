@@ -29,5 +29,6 @@ class DeliveryCarrier(models.Model):
         if vals.get('carrier_id', 'New') == 'New':
             vals['carrier_id'] = self.env['ir.sequence'].next_by_code('delivery.carrier_id') or 'New'
         return super(DeliveryCarrier, self).create(vals)
+        
 
 
