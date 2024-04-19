@@ -62,6 +62,3 @@ class Order(models.Model):
                 order.color = 10
             elif order.status == 'cancel':
                 order.color = 1
-
-
-    

@@ -14,15 +14,15 @@
 			<field name="arch" type="xml">
                 <form>
 					<notebook>
-                        <page string="Información principal">
+                        <page string="Main information">
                             <group>
                                 <field name="name" />
                                 <field name="email" />
-                                <field name="phone" />
+                                <field name="phone" widget="phone" />
                                 <field name="address" />
                             </group>
                         </page>
-                        <page string="Ordenes">
+                        <page string="Orders">
                             <field name="orders" widget="one2many"/>
                         </page>
 					</notebook>
@@ -39,9 +39,9 @@
                     <field name="customer_id" />
                     <field name="name" />
                     <field name="email" />
-                    <field name="phone" />
+                    <field name="phone" widget="phone" />
                     <field name="address" />
-                    <button name="action_view_orders" type="object" string="Ver Ordenes" class="btn-primary"/>
+                    <button name="action_view_orders" type="object" string="Show orders" class="btn-primary"/>
                 </tree>
             </field>
         </record>

@@ -50,7 +50,15 @@ class DeliveryCarrier(models.Model):
             if carrier.phone and not carrier.phone.isdigit():
                 raise models.ValidationError('Phone must be a number')
             
-
+    def action_view_deliveries(self):
+        action = {
+            'type': 'ir.actions.act_window',
+            'name': 'Deliveries',
+            'res_model': 'delivery.order',
+            'view_mode': 'tree,form',
+            'domain': [('carrier_id', '=', self.id)],
+        }
+        return action
         
 
 

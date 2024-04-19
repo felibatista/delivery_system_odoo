@@ -14,18 +14,20 @@
 
             <field name="arch" type="xml">
                 <form>
-                    <group>
-                        <group>
-                            <field name="name" />
-                            <field name="age" />
-                            <field name="phone" />
-                            <field name="active" />
-                            <field name="work_hours"/>
-                        </group>
-                        <group>
+                    <notebook>
+                        <page string="Main information">
+                            <group>
+                                <field name="name" />
+                                <field name="age" />
+                                <field name="phone" widget="phone" />
+                                <field name="work_hours"/>
+                                <field name="active" />
+                            </group>
+                        </page>
+                        <page string="Deliveries">
                             <field name="delivery_ids" widget="one2many"/>
-                        </group>
-                    </group>
+                        </page>
+                    </notebook>
                 </form>
             </field>
         </record>
@@ -39,10 +41,10 @@
                     <field name="name" />
                     <field name="age" />
                     <field name="work_hours"/>
-                    <field name="phone" />
-                    <field name="active" />
-                    <field name="delivery_ids"/>
+                    <field name="phone" widget="phone" />
                     <field name="total_money"/>
+                    <button name="action_view_deliveries" type="object" string="Show deliveries" class="btn-primary"/>
+                    <field name="active" />
                 </tree>
             </field>
         </record>
