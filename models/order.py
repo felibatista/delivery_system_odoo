@@ -18,6 +18,7 @@ class Order(models.Model):
     ], string='Status', default='draft', group_expand='_expand_states', required=True)
     amount = fields.Float(string='Amount')
     color = fields.Integer('Color', compute='_get_color')
+    address = fields.Text(string='Address', related="customer_id.address", readonly=False)
 
     @api.model
     def create(self, vals):
@@ -46,6 +47,12 @@ class Order(models.Model):
     def action_remove_order(self):
         for order in self:
             order.unlink()
+
+    def action_confirm_order(self):
+        for order in self:
+            if order.status == 'done':
+                raise models.ValidationError('Order is already done')
+            order.status = 'confirmed'
 
     def _expand_states(self, states, domain, order):
         return [key for key, val in type(self).status.selection]

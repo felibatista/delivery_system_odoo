@@ -24,6 +24,7 @@
 						<field name="carrier_id" />
 						<field name="date" />
 						<field name="status" />
+						<field name="address" />
 						<field name="amount" />
 					</group>
 				</form>
@@ -58,6 +59,9 @@
 										<div class="oe_kanban_card_field">
 											<field name="amount"/>
 										</div>
+										<div>
+											<field name="address" />
+										</div>
 									</div>
 								</div>
 							</div>
@@ -76,6 +80,7 @@
 					<field name="customer_id"/>
 					<field name="date"/>
 					<field name="status"/>
+					<field name="address" />
 					<field name="amount"/>
 				</calendar>
 			</field>
@@ -113,9 +118,11 @@
 						decoration-success="status == 'done'"
 						decoration-danger="status == 'cancel'"
 					/>
+					<field name="address" />
 					<field name="amount" />
-					<button name="action_end_delivery" string="End delivery" type="object" class="oe_highlight"/>
-					<button name="action_remove_order" string="Remove delivery" type="object" class="btn-danger" confirm="Are you sure you want to remove this order?"/>
+					<button name="action_confirm_order" icon="fa-paper-plane" type="object" class="oe_highlight" invisible="status == 'confirmed' or status == 'cancel' or status == 'done'"/>
+					<button name="action_end_delivery" icon="fa-check" type="object" class="oe_highlight" invisible="status == 'draft' or status == 'cancel' or status == 'done'"/>
+					<button name="action_remove_order" icon="fa-trash" type="object" class="btn-danger" confirm="Are you sure you want to remove this order?"/>
 				</tree>
 			</field>
 		</record>
