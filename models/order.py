@@ -28,7 +28,7 @@ class Order(models.Model):
     @api.constrains('amount')
     def _check_amount(self):
         for order in self:
-            if order.amount < 0:
+            if order.amount <= 0:
                 raise models.ValidationError('Amount must be greater than 0')
             
     @api.constrains('status')

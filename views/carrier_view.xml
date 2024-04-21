@@ -49,7 +49,7 @@
                     <field name="total_money"/>
                     <field name="active" />
                     <button name="action_view_deliveries" type="object" string="Show deliveries" class="btn-primary"/>
-                    <button name="action_remove_carrier" type="object" string="Remove carrier" class="btn-danger"/>
+                    <button name="action_remove_carrier" type="object" string="Remove carrier" class="btn-danger" confirm="Are you sure you want to remove this carrier?"/>
                 </tree>
             </field>
         </record>
