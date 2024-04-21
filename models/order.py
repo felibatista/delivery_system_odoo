@@ -43,10 +43,8 @@ class Order(models.Model):
                 raise models.ValidationError('Order is already done')
             order.status = 'done'
     
-    def remove_order(self):
+    def action_remove_order(self):
         for order in self:
-            if order.status == 'done':
-                raise models.ValidationError('Cannot remove done order')
             order.unlink()
 
     def _expand_states(self, states, domain, order):

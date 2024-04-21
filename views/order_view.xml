@@ -6,6 +6,11 @@
 			<field name="res_model">delivery.order</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="view_mode">tree,form,calendar,kanban</field>
+			<field name="help" type="html">
+				<p class="o_view_nocontent_smiling_face">
+					Create your first delivery order!
+				</p>
+			</field>
 		</record>
 
 		<record id="order_view_form" model="ir.ui.view">
@@ -29,7 +34,7 @@
 			<field name="name">Delivery Order Kanban</field>
 			<field name="model">delivery.order</field>
 			<field name="arch" type="xml">
-				<kanban string="Delivery Orders" default_group_by="status">
+				<kanban string="Delivery Orders" default_group_by="status" sample="1">
 					<field name="color" invisible="1"/>
 					<templates>
 						<t t-name="kanban-box">"
@@ -76,11 +81,27 @@
 			</field>
 		</record>
 
+		<record id="order_boew_search" model="ir.ui.view">
+			<field name="name">Delivery Order Search</field>
+			<field name="model">delivery.order</field>
+			<field name="arch" type="xml">
+				<search string="Orders">
+					<field name="order_id"/>
+					<field name="status"/>
+					<separator/>
+					<group expand="1" string="Group By">
+						<filter string="Status" name="status" context="{'group_by':'status'}"/>
+					</group>
+				</search>
+			</field>
+		</record>
+	
+
 		<record id="order_view_tree" model="ir.ui.view">
 			<field name="name">Delivery Order Tree</field>
 			<field name="model">delivery.order</field>
 			<field name="arch" type="xml">
-				<tree string="Delivery Order">
+				<tree string="Delivery Order" sample="1">
 					<field name="order_id" />
 					<field name="name" />
 					<field name="customer_id" />
@@ -89,7 +110,7 @@
 					<field name="status" />
 					<field name="amount" />
 					<button name="action_end_delivery" string="End delivery" type="object" class="oe_highlight"/>
-					<button name="remove_order" string="Remove delivery" type="object" class="oe_highlight"/>
+					<button name="action_remove_order" string="Remove delivery" type="object" class="btn-danger"/>
 				</tree>
 			</field>
 		</record>

@@ -56,4 +56,7 @@ class Customer(models.Model):
         }
         return action
             
+    def action_remove_customer(self):
+        for customer in self:
+            customer.unlink()
     

@@ -60,5 +60,8 @@ class DeliveryCarrier(models.Model):
         }
         return action
         
+    def action_remove_carrier(self):
+        for carrier in self:
+            carrier.unlink()
 
 

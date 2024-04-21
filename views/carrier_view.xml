@@ -6,12 +6,16 @@
 			<field name="res_model">delivery.carrier</field>
 			<field name="type">ir.actions.act_window</field>
 			<field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first delivery carrier!
+                </p>
+            </field>
 		</record>
 
         <record id="carrier_form" model="ir.ui.view">
             <field name="name">Delivery Carrier</field>
             <field name="model">delivery.carrier</field>
-
             <field name="arch" type="xml">
                 <form>
                     <notebook>
@@ -36,15 +40,16 @@
             <field name="name">Delivery Carrier Tree</field>
             <field name="model">delivery.carrier</field>
             <field name="arch" type="xml">
-                <tree string="Delivery Carrier">
+                <tree string="Delivery Carrier" sample="1">
                     <field name="carrier_id" />
                     <field name="name" />
                     <field name="age" />
                     <field name="work_hours"/>
                     <field name="phone" widget="phone" />
                     <field name="total_money"/>
-                    <button name="action_view_deliveries" type="object" string="Show deliveries" class="btn-primary"/>
                     <field name="active" />
+                    <button name="action_view_deliveries" type="object" string="Show deliveries" class="btn-primary"/>
+                    <button name="action_remove_carrier" type="object" string="Remove carrier" class="btn-danger"/>
                 </tree>
             </field>
         </record>
