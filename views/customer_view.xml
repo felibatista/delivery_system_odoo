@@ -22,7 +22,7 @@
                         <page string="Main information">
                             <group>
                                 <field name="name" />
-                                <field name="email" />
+                                <field name="email" widget="email" />
                                 <field name="phone" widget="phone" />
                                 <field name="address" />
                             </group>
@@ -43,10 +43,11 @@
                 <tree string="Delivery Customer" sample="1">
                     <field name="customer_id" />
                     <field name="name" />
-                    <field name="email" />
+                    <field name="email" widget="email" />
                     <field name="phone" widget="phone" />
                     <field name="address" />
-                    <button name="action_view_orders" type="object" string="Show orders" class="btn-primary"/>
+                    <field name="total_orders"/>
+                    <button name="action_view_orders" type="object" string="Show orders" class="btn-primary" invisible="total_orders == 0"/>
                     <button name="action_remove_customer" type="object" icon="fa-trash" class="btn-danger" confirm="Are you sure you want to remove this customer?"/>
                 </tree>
             </field>

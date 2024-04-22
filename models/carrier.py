@@ -16,6 +16,9 @@ class DeliveryCarrier(models.Model):
     total_deliveries = fields.Integer(string='Total Deliveries', compute='_compute_total_deliveries')
     total_money = fields.Float(string='Total Money', compute='_compute_total_money')
 
+    currency_id = fields.Many2one('res.currency', string='Currency', default=lambda self: self.env.company.currency_id.id)
+
+
     def _compute_total_deliveries(self):
         for carrier in self:
             carrier.total_deliveries = len(carrier.delivery_ids)

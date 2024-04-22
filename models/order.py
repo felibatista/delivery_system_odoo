@@ -8,7 +8,7 @@ class Order(models.Model):
 
     name = fields.Char(string='Order Name', required=True)
     customer_id = fields.Many2one('delivery.customer', string='Customer', required=True)
-    date = fields.Date(string='Order Date', default=fields.Date.today())
+    date = fields.Datetime(string='Order Date', default=fields.Date.today())
     carrier_id = fields.Many2one('delivery.carrier', string='Carrier')
     status = fields.Selection([
         ('draft', 'Draft'),
@@ -19,6 +19,8 @@ class Order(models.Model):
     amount = fields.Float(string='Amount')
     color = fields.Integer('Color', compute='_get_color')
     address = fields.Text(string='Address', related="customer_id.address", readonly=False)
+
+    currency_id = fields.Many2one('res.currency', string='Currency', default=lambda self: self.env.company.currency_id.id)
 
     @api.model
     def create(self, vals):

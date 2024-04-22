@@ -119,7 +119,8 @@
 						decoration-danger="status == 'cancel'"
 					/>
 					<field name="address" />
-					<field name="amount" />
+					<field name="currency_id"/>
+					<field name="amount" widget="monetary" options="{'currency_field': 'currency_id'}" />
 					<button name="action_confirm_order" icon="fa-paper-plane" type="object" class="oe_highlight" invisible="status == 'confirmed' or status == 'cancel' or status == 'done'"/>
 					<button name="action_end_delivery" icon="fa-check" type="object" class="oe_highlight" invisible="status == 'draft' or status == 'cancel' or status == 'done'"/>
 					<button name="action_remove_order" icon="fa-trash" type="object" class="btn-danger" confirm="Are you sure you want to remove this order?"/>
