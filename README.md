@@ -1,7 +1,5 @@
 # 🚚 Odoo Delivery System
 
-Modulo de prueba para el Bootcamp de Odoo (Ubiar). Cuenta con funcionalidades para gestionar un servicio de entrega de paqueteria o delivery. 
-
 ## Instalación
 
 1. Clona este repositorio.
