@@ -25,7 +25,6 @@
                                 <field name="age" />
                                 <field name="phone" widget="phone" />
                                 <field name="work_hours"/>
-                                <field name="active" />
                             </group>
                         </page>
                         <page string="Deliveries">
@@ -49,7 +48,6 @@
                     <field name="currency_id"/>
                     <field name="total_money" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                     <field name="total_deliveries"/>
-                    <field name="active" />
                     <button name="action_view_deliveries" type="object" string="Show deliveries" class="btn-primary" invisible="total_deliveries == 0"/>
                     <button name="action_remove_carrier" type="object" icon="fa-trash" class="btn-danger" confirm="Are you sure you want to remove this carrier?"/>
                 </tree>

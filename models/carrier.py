@@ -9,7 +9,6 @@ class DeliveryCarrier(models.Model):
     name = fields.Char(string='Name', required=True)
     age = fields.Integer(string='Age', default=18)
     work_hours = fields.Float(string='Work Hours', default=8.0)
-    active = fields.Boolean(string='Active', default=True)
     phone = fields.Char(string='Phone')
 
     delivery_ids = fields.One2many('delivery.order', 'carrier_id', string='Deliveries')
