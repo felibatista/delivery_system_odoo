@@ -11,6 +11,8 @@
     'depends' : ['base'],
     'data': [
         'data/ir_sequences_data.xml',
+        'views/product_view.xml',
+        'views/order_line_view.xml',
         'views/order_view.xml',
         'views/carrier_view.xml',
         'views/customer_view.xml',

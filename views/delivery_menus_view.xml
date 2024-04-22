@@ -2,8 +2,9 @@
 <odoo>
 	<data>
 		<menuitem id="delivery_menu" name="Delivery" />
-		<menuitem id="delivery_order_menu" name="Orders" parent="delivery_menu" action="delivery_orders_action" sequence="2" />
-		<menuitem id="delivery_customers_menu" name="Customers" parent="delivery_menu" action="delivery_customers_action" sequence="2" />
-		<menuitem id="carrier_menu" name="Carriers" parent="delivery_menu" action="delivery_carrier_action" sequence="2" />
+		<menuitem id="delivery_order_menu" name="Orders" parent="delivery_menu" action="delivery_orders_action" sequence="1" />
+		<menuitem id="product_menu" name="Products" parent="delivery_menu" action="delivery_products_action" sequence="2" />
+		<menuitem id="delivery_customers_menu" name="Customers" parent="delivery_menu" action="delivery_customers_action" sequence="3" />
+		<menuitem id="carrier_menu" name="Carriers" parent="delivery_menu" action="delivery_carrier_action" sequence="4" />
 	</data>
 </odoo>
