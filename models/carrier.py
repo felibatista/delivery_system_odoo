@@ -18,11 +18,11 @@ class DeliveryCarrier(models.Model):
 
     currency_id = fields.Many2one('res.currency', string='Currency', default=lambda self: self.env.company.currency_id.id)
 
-
     def _compute_total_deliveries(self):
         for carrier in self:
             carrier.total_deliveries = len(carrier.delivery_ids)
     
+    @api.depends('delivery_ids.amount')
     def _compute_total_money(self):
         for carrier in self:
             carrier.total_money = sum(order.amount for order in carrier.delivery_ids)

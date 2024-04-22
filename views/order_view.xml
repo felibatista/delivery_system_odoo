@@ -94,7 +94,7 @@
 					<field name="order_id"/>
 					<field name="status"/>
 					<separator/>
-					<group expand="1" string="Group By">
+					<group expand="1" string="Group by">
 						<filter string="Status" name="status" context="{'group_by':'status'}"/>
 					</group>
 				</search>
